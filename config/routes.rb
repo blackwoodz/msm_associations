@@ -1,4 +1,56 @@
 Rails.application.routes.draw do
+    get "/", :controller => "movies", :action => "index"
+  # Routes for the Actor resource:
+  # CREATE
+  get "/actors/new", :controller => "actors", :action => "new"
+  post "/create_actor", :controller => "actors", :action => "create"
+
+  # READ
+  get "/actors", :controller => "actors", :action => "index"
+  get "/actors/:id", :controller => "actors", :action => "show"
+
+  # UPDATE
+  get "/actors/:id/edit", :controller => "actors", :action => "edit"
+  post "/update_actor/:id", :controller => "actors", :action => "update"
+
+  # DELETE
+  get "/delete_actor/:id", :controller => "actors", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Character resource:
+  # CREATE
+  get "/characters/new", :controller => "characters", :action => "new"
+  post "/create_character", :controller => "characters", :action => "create"
+
+  # READ
+  get "/characters", :controller => "characters", :action => "index"
+  get "/characters/:id", :controller => "characters", :action => "show"
+
+  # UPDATE
+  get "/characters/:id/edit", :controller => "characters", :action => "edit"
+  post "/update_character/:id", :controller => "characters", :action => "update"
+
+  # DELETE
+  get "/delete_character/:id", :controller => "characters", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Movie resource:
+  # CREATE
+  get "/movies/new", :controller => "movies", :action => "new"
+  post "/create_movie", :controller => "movies", :action => "create"
+
+  # READ
+  get "/movies", :controller => "movies", :action => "index"
+  get "/movies/:id", :controller => "movies", :action => "show"
+
+  # UPDATE
+  get "/movies/:id/edit", :controller => "movies", :action => "edit"
+  post "/update_movie/:id", :controller => "movies", :action => "update"
+
+  # DELETE
+  get "/delete_movie/:id", :controller => "movies", :action => "destroy"
+  #------------------------------
+
   # Routes for the Director resource:
   # CREATE
   get "/directors/new", :controller => "directors", :action => "new"
@@ -14,6 +66,19 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_director/:id", :controller => "directors", :action => "destroy"
+
+  # Movie.order(:year).first.year
+  # Movie.order(:year).last.year
+  # Movie.order(:duration).first.duration
+  # Movie.order(:duration).last.title
+  # Movie.where("title LIKE '%godfather%'").count
+  # Director.find(Movie.find_by(title: 'Life Is Beautiful').director_id).name
+  # OR: Director.joins(:movies).where("movies.title = 'Life Is Beautiful'").take.name
+  # OR: Movie.find_by("title = 'Life Is Beautiful'").director.name
+  # Director.joins(:movies).where("directors.name = 'Francis Ford Coppola'").count
+  # OR: Director.find_by("name = 'Francis Ford Coppola'").movies.count
+  # Director.find_by("name = 'Francis Ford Coppola'").movies.order(:year).last.title
+
   #------------------------------
 
   # The priority is based upon order of creation: first created -> highest priority.
